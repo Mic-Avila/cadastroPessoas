@@ -1,0 +1,36 @@
+<h1>Nova Pessoa</h1>
+
+<div class="well">
+  <form #formPessoa="ngForm">
+    <div>
+      <div class="form-group">
+        <label for="nome" class="form-label">Nome:</label>
+        <input [(ngModel)]="pessoa.nome" #nome="ngModel" type="text" name="nome" id="" class="form-control" id="nome" aria-describedby="helpId"  required minlength="2"/>
+        <small id="helpId" class="text-muted">Informe seu nome</small>
+        <div class="alert alert-danger" *ngIf="nome.errors && (nome.dirty || nome.touched)">
+            <div [hidden]="!nome.errors['required']">
+                Digite o nome da pessoa</div>
+            <div [hidden]="!nome.errors['minlength']">
+                O nome deve conter ao menos 2 caracteres</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="idade" class="form-label">Idade:</label>
+        <input [(ngModel)]="pessoa.idade" #idade="ngModel"type="text" name="idade" id="" class="form-control" id="idade" aria-describedby="helpId" required />
+        <small id="helpId" class="text-muted">Informe sua idade</small>
+        <div class="alert alert-danger" *ngIf="idade.errors && (idade.dirty || idade.touched)">
+            <div [hidden]="!idade.errors['required']">
+                Digite a idade da pessoa</div>
+        </div>
+      </div>
+      <div class="form-group">
+       <button type="button" class="btn btn-primary m-1" (click)="atualizar()"  [disabled]="!formPessoa.form.valid">
+        <i class="fa fa-save" aria-hidden="true"></i> Atualizar
+       </button>
+       <a class="btn btn-secondary m-1" [routerLink]="['/pessoas']">
+         <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+       </a>
+      </div>
+    </div>
+  </form>
+</div>
