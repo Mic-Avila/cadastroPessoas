@@ -6,19 +6,24 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { InserirPessoaComponent } from './inserir-pessoa/inserir-pessoa.component';
 import { EditarPessoaComponent } from './editar-pessoa/editar-pessoa.component';
+import { NumericoDirective } from '../shared/directives/numerico.directive';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 
+export const options: Partial<IConfig> | (()=> Partial<IConfig>) = {}
 
 @NgModule({
   declarations: [
     ListarPessoaComponent,
     InserirPessoaComponent,
-    EditarPessoaComponent
+    EditarPessoaComponent,
+    NumericoDirective
   ],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgxMaskModule.forRoot()
   ],
   providers:[
     PessoaService

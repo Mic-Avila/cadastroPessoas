@@ -14,11 +14,12 @@
     <tr *ngFor="let pessoa of pessoas">
       <td>{{pessoa.nome}}</td>
       <td>{{pessoa.idade}}</td>
+      <td>{{pessoa.dataNascimento! | mask:'d0/M0/0000'}}</td>
       <td class="text-center" style="width: 300px">
         <a [routerLink]="['/pessoas/editar', pessoa.id]" href="#" title="Editar" alt="Editar" class="btn btn-xs btn-info m-1">
           <i class="fa fa-edit" aria-hidden="true"></i> Editar
         </a>
-        <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger m-1">
+        <a href="#" title="Remover" alt="Remover" (click)="remover($event, pessoa)" class="btn btn-xs btn-danger m-1">
           <i class="fa fa-edit" aria-hidden="true"></i> Remover
         </a>
       </td>
